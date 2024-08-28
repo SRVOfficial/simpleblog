@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import Post, Category, Comment
 
+
 class CommentItemInline(admin.TabularInline):
     model = Comment
     row_id_fields = ['post']
