@@ -1,0 +1,100 @@
+{% extends 'core/base.html' %}
+
+{% block title %}About | {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Page Header -->
+<div class="text-center mb-5">
+    <h1 class="mb-4 display-4 text-primary fw-bold" style="font-size: 1.75rem; text-align: center;">
+        <strong>About This Project</strong>
+    </h1>
+    
+    <p class="lead text-muted"><strong>Learn more about the technologies and features behind this blog.</strong></p>
+</div>
+
+
+    <!-- Welcome Section -->
+    <section class="mb-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="h3 mb-3 text-dark fw-semibold" style="font-size: 1.75rem;">Welcome to My Django Blog Project</h2>
+                <p class="lead text-secondary">Hello and welcome! This blog is a showcase of my journey in web development, specifically highlighting my skills with Django and Python. As an aspiring developer, I created this project to demonstrate my understanding of key web development concepts and to share my learning experiences with others.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Overview Section -->
+    <section class="mb-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="h3 mb-3 text-dark fw-semibold" style="font-size: 1.75rem;">Technical Overview</h2>
+                <p class="text-secondary">This blog is built using the following technologies and concepts:</p>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Backend:</strong> Django framework (Python)</li>
+                    <li class="list-group-item"><strong>Frontend:</strong> HTML, Bootstrap, and JavaScript</li>
+                    <li class="list-group-item"><strong>Database:</strong> SQLite</li>
+                    <li class="list-group-item"><strong>Version Control:</strong> Git</li>
+                    <li class="list-group-item"><strong>Deployment:</strong> Vercel</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="mb-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="h3 mb-3 text-dark fw-semibold" style="font-size: 1.75rem;">Key Features Implemented</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">CRUD operations for blog posts</li>
+                            <li class="list-group-item">Commenting system</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">Category and tagging system for posts</li>
+                            <li class="list-group-item">Search functionality</li>
+                            <li class="list-group-item">Responsive design for mobile and desktop viewing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Enhancements Section -->
+    <section class="mb-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="h3 mb-3 text-dark fw-semibold" style="font-size: 1.75rem;">Future Enhancements</h2>
+                <p class="text-secondary">As with any project, there's always room for improvement. Some features I'm planning to add include:</p>
+                <ul class="list-group">
+                    <li class="list-group-item">User authentication and authorization</li>
+                    <li class="list-group-item">User profiles and avatars</li>
+                    <li class="list-group-item">Social media sharing integration</li>
+                    <li class="list-group-item">A newsletter subscription system</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="mb-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4 text-center">
+                <h2 class="h3 mb-3 text-dark fw-semibold" style="font-size: 1.75rem;">Let's Connect</h2>
+                <p class="text-secondary">I'm always eager to learn and grow as a developer. If you have any questions about this project, suggestions for improvement, or just want to connect, feel free to reach out to me.</p>
+                <a href="mailto:sauryatapish159@gmail.com" class="btn btn-primary btn-lg mt-3">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-5 pt-4 border-top text-center">
+        <p class="text-muted">Thank you for visiting my project. I hope it demonstrates my passion for coding and my commitment to continuous learning in the field of web development.</p>
+    </footer>
+</div>
+{% endblock %}
