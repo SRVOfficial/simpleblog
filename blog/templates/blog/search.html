@@ -3,37 +3,28 @@
 {% block title %} Search | {% endblock %}
 
 {% block content %}
-    <section class="hero ">
-        <div class="hero-body">
-            <div class="container">
-                <section class="section">
-                    <div class="columns">
-                        <div class="column is-8 is-offset-2">
-                            <div class="content is-medium">
-                                <h1>Search results</h1>
-                                <h3>Query "{{ query }}"</h3>
-                            </div>
-                            
-                            {% for post in posts %}
-                                <div class="content is-medium">
-                                    <a href="{% url 'post_detail' post.category.slug post.slug %}">
-                                        <h2 class="subtitle is-4">{{ post.created_at|timesince }} ago</h2>
-                                        <h1 class="title">{{ post.title }}</h1>
-                                        <p>
-                                            {{ post.intro }}
-                                        </p>
-                                    </a>
-                                </div>
-                                
-                                {% empty %}
-                                <div class="content">
-                                    <p>No result for the given query....</p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </section>
+<section class="bg-gray-100 py-12">
+    <div class="container mx-auto px-4">
+        <section class="bg-white shadow-lg rounded-lg p-8 mb-8">
+            <h1 class="text-3xl font-semibold text-gray-800 mb-2">Search results</h1>
+            <h3 class="text-lg text-gray-500">Query "{{ query }}"</h3>
+        </section>
+
+        <section class="space-y-8">
+            {% for post in posts %}
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <a href="{% url 'post_detail' post.category.slug post.slug %}" class="text-gray-800 hover:text-blue-600">
+                        <h2 class="text-sm text-gray-500">{{ post.created_at|timesince }} ago</h2>
+                        <h1 class="text-2xl font-semibold text-gray-800 mt-2">{{ post.title }}</h1>
+                        <p class="text-gray-700 mt-4">{{ post.intro }}</p>
+                    </a>
+                </div>
+            {% empty %}
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="text-center text-gray-500">No results for the given query...</p>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
+</section>
 {% endblock %}

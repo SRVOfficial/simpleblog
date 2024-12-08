@@ -1,6 +1,5 @@
 from django.db import models
-
-# from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor_uploader.fields import RichTextUploadingField  # Import for rich text fields
 
 # Create your models here.
 class Category(models.Model):
@@ -17,33 +16,35 @@ class Category(models.Model):
     def get_absolute_url(self):
         return '/%s/' % self.slug
 
+
 class Post(models.Model):
     ACTIVE = 'active'
     DRAFT = 'draft'
 
-    CHOICES_STATUS = {
+    CHOICES_STATUS = [
         (ACTIVE, 'Active'),
         (DRAFT, 'Draft')
-    }
+    ]
 
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField()
-    intro = models.TextField()
-    body = models.TextField()
+    intro = RichTextUploadingField()  # Use RichTextUploadingField for the intro
+    body = RichTextUploadingField()   # Use RichTextUploadingField for the body
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=10, choices = CHOICES_STATUS, default = ACTIVE)
+    status = models.CharField(max_length=10, choices=CHOICES_STATUS, default=ACTIVE)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     class Meta:
-        # odering the posts in ascending order of their creation
-        ordering = ('-created_at',) # here ordering is a tuple that's why we must need to mention comma(,) at the end
+        # Ordering the posts in descending order of their creation
+        ordering = ('-created_at',)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return '/%s/%s/' % (self.category.slug, self.slug)
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
@@ -54,3 +55,71 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
+
+
+
+
+
+
+
+
+# from django.db import models
+
+# # from ckeditor_uploader.fields import RichTextUploadingField
+
+# # Create your models here.
+# class Category(models.Model):
+#     title = models.CharField(max_length=255)
+#     slug = models.SlugField()
+
+#     class Meta:
+#         ordering = ('title',)
+#         verbose_name_plural = 'Categories'
+
+#     def __str__(self):
+#         return self.title
+
+#     def get_absolute_url(self):
+#         return '/%s/' % self.slug
+
+# class Post(models.Model):
+#     ACTIVE = 'active'
+#     DRAFT = 'draft'
+
+#     CHOICES_STATUS = {
+#         (ACTIVE, 'Active'),
+#         (DRAFT, 'Draft')
+#     }
+
+#     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
+#     title = models.CharField(max_length=255)
+#     slug = models.SlugField()
+#     intro = models.TextField()
+#     body = models.TextField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     status = models.CharField(max_length=10, choices = CHOICES_STATUS, default = ACTIVE)
+#     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+
+#     class Meta:
+#         # odering the posts in ascending order of their creation
+#         ordering = ('-created_at',) # here ordering is a tuple that's why we must need to mention comma(,) at the end
+
+#     def __str__(self):
+#         return self.title
+
+#     def get_absolute_url(self):
+#         return '/%s/%s/' % (self.category.slug, self.slug)
+
+# class Comment(models.Model):
+#     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+#     name = models.CharField(max_length=255)
+#     email = models.EmailField()
+#     body = models.TextField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         return self.name

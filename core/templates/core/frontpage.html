@@ -3,94 +3,45 @@
 {% block title %} Home | {% endblock %}
 
 {% block content %}
-<section class="hero is-dark is-bold">
-    <div class="hero-body">
-        <div class="container is-fluid">
-            <h1 class="title has-text-white has-text-centered is-size-2-touch is-size-1-desktop">
-                Welcome to Our Blog
-            </h1>
-            <h2 class="subtitle has-text-grey-light has-text-centered is-size-5-touch is-size-4-desktop">
-                Discover the latest posts and insights
-            </h2>
-        </div>
+<section class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold">
+            Welcome to Our Blog
+        </h1>
+        <h2 class="text-lg md:text-xl text-gray-300 mt-4">
+            Discover the latest posts and insights
+        </h2>
     </div>
 </section>
 
-
-    <section class="section">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column is-8 is-offset-2 is-full-mobile">
-                    {% for post in posts %}
-                        <div class="box">
-                            <div class="content is-medium">
-                                <a href="{% url 'post_detail' post.category.slug post.slug %}" class="has-text-dark">
-                                    {% if post.image %}
-                                        <figure class="image is-3by2">
-                                            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="is-fullwidth">
-                                        </figure>
-                                    {% endif %}
-                                    <h2 class="subtitle is-5 has-text-grey">{{ post.created_at|timesince }} ago</h2>
-                                    <h1 class="title is-3">{{ post.title }}</h1>
-                                    <p class="has-text-justified">
-                                        {{ post.intro }}
-                                    </p>
-                                </a>
-                            </div>
+<section class="py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {% for post in posts %}
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <a href="{% url 'post_detail' post.category.slug post.slug %}" class="block hover:shadow-lg transition-shadow duration-300">
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                        {% endif %}
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500">
+                                {{ post.created_at|timesince }} ago
+                            </p>
+                            <h2 class="text-xl font-semibold text-gray-800 mt-2">
+                                {{ post.title }}
+                            </h2>
+                            <p class="text-gray-700 mt-4">
+                                {{ post.intro }}
+                            </p>
                         </div>
-                    {% empty %}
-                        <p class="has-text-centered has-text-grey">No posts available at the moment. Check back later!</p>
-                    {% endfor %}
+                    </a>
                 </div>
-            </div>
+            {% empty %}
+                <p class="text-center text-gray-500">
+                    No posts available at the moment. Check back later!
+                </p>
+            {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} {% extends 'core/base.html' %}
-
-{% block title %} Home | {% endblock %}
-
-{% block content %}
-    <section class="hero ">
-        <div class="hero-body">
-            <div class="container">
-                <section class="section">
-                    <div class="columns">
-                        <div class="column is-8 is-offset-2">
-                            {% for post in posts %}
-                                <div class="content is-medium">
-                                    <a href="{% url 'post_detail' post.category.slug post.slug %}">
-                                        {% if post.image %}
-                                            <figure class="image">
-                                                <img src="{{ post.image.url }}" alt="">
-                                            </figure>
-                                        {% endif %}
-                                        <h2 class="subtitle is-4">{{ post.created_at|timesince }} ago</h2>
-                                        <h1 class="title">{{ post.title }}</h1>
-                                        <p>
-                                            {{ post.intro }}
-                                        </p>
-                                    </a>
-                                
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </section>
-{% endblock %} {% endcomment %}

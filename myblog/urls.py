@@ -36,4 +36,7 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('', include('blog.urls')), # this blog.urls will get access first, before it goes to frontpage
     path('', frontpage, name='frontpage'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
+    path('__reload__/', include('django_browser_reload.urls')), # this is for hot reloading and put it at the end of the urlpatterns
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -41,11 +41,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-    # 'ckeditor',
-    # 'ckeditor_uploader',
+    'ckeditor',
+    'ckeditor_uploader', 
     'core.apps.CoreConfig',
     'blog.apps.BlogConfig',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
 ]
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = ['127.0.0.1', 'https://srv-simpleblog.vercel.app/']
+NPM_BIN_PATH = "D:/Installed_Applications/NodeJS_installation/npm.cmd"
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
 ROOT_URLCONF = 'myblog.urls'
@@ -243,3 +255,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     ]),
 #     }
 # }
+
+
+
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 400,
+        'width': 'auto',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ['Image', 'CodeSnippet'],  # Enable code snippet support
+            ['Source'],
+        ],
+        'extraPlugins': 'codesnippet',  # Enable code block plugin
+    },
+}
+
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
